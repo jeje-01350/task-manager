@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskFacade } from '../services/task-facade.service';
-import { Task } from '../model/task.model';
+import { TaskFacade } from '../../services/task-facade.service';
+import { Task } from '../../model/task.model';
 
 @Component({
   selector: 'app-task-list',
