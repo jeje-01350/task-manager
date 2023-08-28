@@ -1,0 +1,7 @@
+<!-- src/app/task/task.component.html -->
+<div>
+  <h2>{{ task.title }}</h2>
+  <p>{{ task.description }}</p>
+  <p [appTaskColor]="task.status">État : {{ task.status }}</p>
+  <small>{{task.date | customDate}}</small>
+</div>
