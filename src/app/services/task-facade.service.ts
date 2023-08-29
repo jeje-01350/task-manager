@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { CRUDTaskListService } from './crud-task-list.service';
 import { ByStatutTaskListService } from './by-statut-task-list.service';
-import { Task, TaskStatus } from '../model/task.model';
+import { Task } from '../model/task.model';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskFacade {
   constructor(
-    private crudService: CRUDTaskListService,
     private byStatutService: ByStatutTaskListService
   ) {}
 
-  getTasksByStatus(): Task[] {
+  getTasksByStatus(): Observable<Task[]> {
     return this.byStatutService.getTasksByStatus();
   }
 
-  getTasksAllStatus(): Task[] {
-    return this.byStatutService.getAllTaskInProgress();
+  getTasksAllStatus(): Observable<Task[]> {
+    return this.byStatutService.getTasksAllStatus();
   }
 }

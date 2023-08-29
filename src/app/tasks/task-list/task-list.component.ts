@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskFacade } from '../../services/task-facade.service';
 import { Task } from '../../model/task.model';
+import { TaskFacade } from '../../services/task-facade.service';
 
 @Component({
   selector: 'app-task-list',
@@ -14,7 +14,12 @@ export class TaskListComponent implements OnInit {
   constructor(private taskFacade: TaskFacade) {}
 
   ngOnInit(): void {
-    this.allTasks = this.taskFacade.getTasksAllStatus();
-    this.archivedTasks = this.taskFacade.getTasksByStatus();
+    this.taskFacade.getTasksAllStatus().subscribe(tasks => {
+      this.allTasks = tasks;
+    });
+
+    this.taskFacade.getTasksByStatus().subscribe(tasks => {
+      this.archivedTasks = tasks;
+    });
   }
 }
